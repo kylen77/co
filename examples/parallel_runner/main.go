@@ -18,14 +18,19 @@ func sleepAsync(index int, ms int64) *co.Task {
 }
 
 func main() {
-	t1 := sleepAsync(1, 1000)
-	t2 := sleepAsync(2, 1000)
-	t3 := sleepAsync(3, 1000)
-	t4 := sleepAsync(4, 1000)
+	tick := time.Tick(time.Second / 100)
+	for range tick {
+		fmt.Println("before sleep : ", time.Now())
+		t1 := sleepAsync(1, 1000)
+		t2 := sleepAsync(2, 1000)
+		t3 := sleepAsync(3, 1000)
+		t4 := sleepAsync(4, 4000)
 
-	co.Await(t1)
-	co.Await(t2)
-	co.Await(t3)
-	co.Await(t4)
-	ffmt.Println("co finish. Done.")
+		co.Await(t1)
+		co.Await(t2)
+		co.Await(t3)
+		co.Await(t4)
+		fmt.Println("after sleep : ", time.Now())
+		ffmt.Println("co finish. Done.")
+	}
 }
