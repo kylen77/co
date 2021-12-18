@@ -45,6 +45,7 @@ func Map(
 				go func(item interface{}, index int) {
 					// new Task
 					ffmt.Printf("starting %d", index)
+					ffmt.Println()
 
 					var err error
 					t := fn(item, index, items)

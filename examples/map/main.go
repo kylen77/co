@@ -1,11 +1,11 @@
 package main
 
 import (
+	"fmt"
 	"time"
 
 	"e.coding.net/kunz/startkit-x/go-co"
 	"e.coding.net/kunz/startkit-x/go-co/coutil"
-	ffmt "gopkg.in/ffmt.v1"
 )
 
 func sleep(sec int) *co.Task {
@@ -17,7 +17,7 @@ func sleep(sec int) *co.Task {
 
 func main() {
 	items := []interface{}{1, 2, 3, 4}
-	ffmt.Puts("before work : ", time.Now())
+	fmt.Println("before work : ", time.Now())
 
 	// with concurrency 2
 	t := coutil.Map(items, func(item interface{}, index int, arr []interface{}) *co.Task {
@@ -28,9 +28,9 @@ func main() {
 	}, 2)
 
 	res, _ := co.Await(t)
-	ffmt.Puts("after work : ", time.Now())
+	fmt.Println("after work : ", time.Now())
 
-	ffmt.Puts(res)
+	fmt.Println(res)
 }
 
 // if concurrency = 1

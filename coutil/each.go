@@ -8,7 +8,8 @@ import "e.coding.net/kunz/startkit-x/go-co"
 //  coutil.Each(arr, func(item, index, arr) { ... })
 func Each(
 	items []interface{},
-	fn func(interface{}, int, []interface{}) *co.Task) *co.Task {
+	fn func(interface{}, int, []interface{}) *co.Task,
+) *co.Task {
 	return co.Async(func() interface{} {
 		ret := make([]interface{}, len(items))
 		for index, item := range items {
