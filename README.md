@@ -43,5 +43,3 @@ import "e.coding.net/kunz/startkit-x/go-co"
 
 - `coutil.Each` : like `Promise.each`
 - `coutil.Map` : like `Promise.map` with concurrency support
-
-*more checkout demo/ directory*
