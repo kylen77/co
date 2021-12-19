@@ -21,6 +21,7 @@ func Async(fn func() interface{}) *Task {
 
 			// error is a finish state too
 			t.Channel <- t.Result
+			close(t.Channel)
 		}()
 
 		t.Result = fn()
@@ -38,6 +39,5 @@ func Await(t *Task) (interface{}, error) {
 	// when t.Channel is available
 	// set result as await ret value
 	t.Result = <-t.Channel
-	close(t.Channel)
 	return t.Result, t.Error
 }

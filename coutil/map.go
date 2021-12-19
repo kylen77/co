@@ -28,6 +28,12 @@ func Map(
 		chError := make(chan error, total)
 		returned := false
 
+		// 关闭chan
+		defer func() {
+			close(chComplete)
+			close(chError)
+		}()
+
 		// oncomplete callback
 		var oncomplete func()
 		oncomplete = func() {
@@ -72,11 +78,9 @@ func Map(
 
 		select {
 		case <-chComplete:
-			close(chComplete)
 			returned = true
 			return ret
 		case err := <-chError:
-			close(chError)
 			returned = true
 			panic(err)
 		}
