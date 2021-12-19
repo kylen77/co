@@ -38,6 +38,6 @@ func Await(t *Task) (interface{}, error) {
 	// when t.Channel is available
 	// set result as await ret value
 	t.Result = <-t.Channel
-
+	close(t.Channel)
 	return t.Result, t.Error
 }

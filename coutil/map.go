@@ -34,6 +34,7 @@ func Map(
 
 			if completed >= total {
 				chComplete <- 1
+				close(chComplete)
 				return
 			}
 
@@ -70,9 +71,11 @@ func Map(
 
 		select {
 		case <-chComplete:
+			close(chComplete)
 			returned = true
 			return ret
 		case err := <-chError:
+			close(chError)
 			returned = true
 			panic(err)
 		}
