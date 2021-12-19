@@ -1,7 +1,10 @@
 package coutil
 
 import (
+	"fmt"
+
 	"e.coding.net/kunz/startkit-x/go-co"
+
 	"gopkg.in/ffmt.v1"
 )
 
@@ -34,7 +37,6 @@ func Map(
 
 			if completed >= total {
 				chComplete <- 1
-				close(chComplete)
 				return
 			}
 
@@ -45,8 +47,7 @@ func Map(
 
 				go func(item interface{}, index int) {
 					// new Task
-					ffmt.Printf("starting %d", index)
-					ffmt.Println()
+					ffmt.Println(fmt.Sprintf("starting %d", index))
 
 					var err error
 					t := fn(item, index, items)
