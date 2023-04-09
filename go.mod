@@ -1,4 +1,4 @@
-module e.coding.net/kunz/startkit-x/go-co
+module github.com/kylen77/co
 
 go 1.17
 

@@ -11,14 +11,14 @@ to simulate
 ## Install
 
 ```sh
-$ go get e.coding.net/kunz/startkit-x/go-co
+$ go get github.com/kylen77/co
 ```
 
 ## API
 
 ### `co`
 ```go
-import "e.coding.net/kunz/startkit-x/go-co"
+import "github.com/kylen77/co"
 ```
 
 - co.Task : similar to Task in .NET,stands for a samll piece of work
